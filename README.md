@@ -1,5 +1,5 @@
 # atom-setup
-This repository contains the `main.sh` script which will, if run, build an AppImage for Atom on your local system, install a desktop configuration file for it and an icon.
+This repository contains the `main.sh` script which will, if run, build an AppImage for the latest Atom release on your local system, install a desktop configuration file for it and an icon.
 
 ## One-Liner
 To execute `main.sh` in one line (regardless of whether you have a copy of this repo locally) merely run:
