@@ -124,6 +124,8 @@ printf "Moving AppImage to $HOME/.local/bin\n"
 if ! [[ -d $HOME/.local/bin ]]; then
   mkdir -p $HOME/.local/bin
 fi
+# delete previous Atom AppImages
+rm $HOME/.local/bin/$APP*.AppImage
 cp out/*AppImage $HOME/.local/bin
 
 # Install desktop config file and icon
