@@ -74,15 +74,12 @@ find . \
   -or -name "*.html" -exec rm {} \; \
   -or -name "*.bat" -exec rm {} \; \
   -or -name "*.cmd" -exec rm {} \; \
-  -or -name "*.json" -exec rm {} \; \
   -or -name "LICENSE" -exec rm {} \; \
   -or -name "*akefile*" -exec rm {} \; \
-  -or -name "*.py" -exec rm {} \; \
   -or -name "*.markdown" -exec rm {} \; \
   -or -name "*.txt" -exec rm {} \; \
   -or -name "*.png" -exec rm {} \; \
-  -or -name "test" -type d -empty -delete
-
+  -or -name "*.py" -exec rm {} \;
 cd -
 
 # Download AppRun
