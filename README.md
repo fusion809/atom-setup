@@ -13,6 +13,9 @@ In order to use this repo you only need the following programs to be installed:
 
 * cut
 * grep
-* SquashFS
 * sed
+* SquashFS
 * wget
+
+## License
+The contents of this repository are licensed under the GNU General Public License version 3. Atom itself is licensed under the [MIT License](https://github.com/atom/atom/blob/master/LICENSE.md).
