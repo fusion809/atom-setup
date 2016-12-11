@@ -17,9 +17,10 @@ if [[ -f "$HOME/.local/bin/$APP-$ATOM_VERSION*-$ARCH.AppImage" ]]; then
   printf "The latest version of Atom is presently available on this system!" && exit 1
 fi
 
+# Download to and work in /tmp
 cd /tmp
 wget -c $DLD
-tar zxvf atom*tar.gz
+tar zxf atom*tar.gz
 
 mkdir -p AppDir/usr/bin
 cp -r atom-*/* AppDir/usr/bin
@@ -78,3 +79,4 @@ cp out/*AppImage $HOME/.local/bin
 
 sed -i -e "s|Exec=atom|Exec=$HOME/.local/bin/$APP-$VERSION-$ARCH.AppImage|g" $HOME/.local/share/applications/appimage-atom.desktop
 chmod +x $HOME/.local/share/applications/appimage-atom.desktop
+rm -rf /tmp/AppDir
