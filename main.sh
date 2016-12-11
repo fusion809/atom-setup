@@ -67,6 +67,24 @@ EOF
 # Add a symlink so that the atom and apm executables are available from the same folder
 ( cd usr/bin && ln -sf resources/app/apm/bin/apm apm )
 
+cd usr/bin
+# Remove unneeded files
+find . \
+  -name "*.md" -exec rm {} \; \
+  -or -name "*.html" -exec rm {} \; \
+  -or -name "*.bat" -exec rm {} \; \
+  -or -name "*.cmd" -exec rm {} \; \
+  -or -name "*.json" -exec rm {} \; \
+  -or -name "LICENSE" -exec rm {} \; \
+  -or -name "*akefile*" -exec rm {} \; \
+  -or -name "*.py" -exec rm {} \; \
+  -or -name "*.markdown" -exec rm {} \; \
+  -or -name "*.txt" -exec rm {} \; \
+  -or -name "*.png" -exec rm {} \; \
+  -or -name "test" -type d -empty -delete
+
+cd -
+
 # Download AppRun
 curl -OL "https://github.com/probonopd/AppImageKit/releases/download/5/AppRun" # (64-bit)
 chmod a+x ./AppRun
@@ -119,8 +137,8 @@ fi
 if ! [[ -d $HOME/.local/share/icons ]]; then
   mkdir -p $HOME/.local/share/icons
 fi
-cp atom.desktop $HOME/.local/share/applications/appimage-atom.desktop
-cp atom.png $HOME/.local/share/icons
+cp AppDir/atom.desktop $HOME/.local/share/applications/appimage-atom.desktop
+cp AppDir/atom.png $HOME/.local/share/icons
 sed -i -e "s|Exec=atom|Exec=$HOME/.local/bin/$APP-$VERSION-$ARCH.AppImage|g" $HOME/.local/share/applications/appimage-atom.desktop
 chmod +x $HOME/.local/share/applications/appimage-atom.desktop
 
