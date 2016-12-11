@@ -5,18 +5,18 @@ set -e
 set -x
 
 # Check dependencies
-which wget >/dev/null 2>&1 || ( printf "wget missing" && exit 1 )
-which grep >/dev/null 2>&1 || ( printf "grep missing" && exit 1 )
-which sed >/dev/null 2>&1 || ( printf "sed missing" && exit 1 )
-which cut >/dev/null 2>&1 || ( printf "cut missing" && exit 1 )
-which mksquashfs >/dev/null 2>&1 || (printf "mksquashfs missing" && exit 1)
+which wget >/dev/null 2>&1 || ( printf '\e[1;31m%-6s\e[m' "wget missing" && exit 1 )
+which grep >/dev/null 2>&1 || ( printf '\e[1;31m%-6s\e[m' "grep missing" && exit 1 )
+which sed >/dev/null 2>&1 || ( printf '\e[1;31m%-6s\e[m' "sed missing" && exit 1 )
+which cut >/dev/null 2>&1 || ( printf '\e[1;31m%-6s\e[m' "cut missing" && exit 1 )
+which mksquashfs >/dev/null 2>&1 || (printf '\e[1;31m%-6s\e[m' "mksquashfs missing" && exit 1)
 
-printf "Welcome to the Atom AppImage builder and installer! If you experience a bug please report it at our bug tracker: https://github.com/fusion809/atom-setup/issues.\n"
+printf '\e[1;32m%-6s\e[m' "Welcome to the Atom AppImage builder and installer! If you experience a bug please report it at our bug tracker: https://github.com/fusion809/atom-setup/issues.\n"
 
 # Check architecture
 ARCH=$(uname -m)
 if ! [[ $ARCH == "x86_64" ]]; then
-  printf "Ah, buddy this script won't work on systems other than x86_64 and this script has detected you are running on a $ARCH system. So this script will exit. If this is an error on the part of this script please report it at https://github.com/fusion809/atom-setup/issues/.\n" && exit 1
+  printf '\e[1;31m%-6s\e[m' "Ah, buddy this script won't work on systems other than x86_64 and this script has detected you are running on a $ARCH system. So this script will exit. If this is an error on the part of this script please report it at https://github.com/fusion809/atom-setup/issues/.\n" && exit 1
 fi
 
 # appname
@@ -27,10 +27,10 @@ DLD=$(wget -q "https://api.github.com/repos/atom/atom/releases/latest"  -O - | g
 
 # Atom Version
 ATOM_VERSION=$(printf $DLD | cut -d '/' -f 8 | sed 's/v//g')
-printf "This script has determined the latest available stable release of Atom to be $ATOM_VERSION. If this is wrong please report this as this is a bug!\n"
+printf '\e[1;34m%-6s\e[m' "This script has determined the latest available stable release of Atom to be $ATOM_VERSION. If this is wrong please report this as this is a bug!\n"
 
 if [[ -f "$HOME/.local/bin/$APP-$ATOM_VERSION.glibc2.14-$ARCH.AppImage" ]]; then
-  printf "The latest version of Atom is presently available on this system, so this script will exit.\n" && exit 1
+  printf '\e[1;32m%-6s\e[m' "The latest version of Atom is presently available on this system, so this script will exit.\n" && exit 1
 fi
 
 # Work in /tmp
@@ -120,7 +120,7 @@ chmod a+x AppImageAssistant
 chmod +x out/$APP"-"$VERSION"-"$ARCH".AppImage"
 
 # Move AppImage to $HOME/.local/bin
-printf "Moving AppImage to $HOME/.local/bin\n"
+printf '\e[1;34m%-6s\e[m' "Moving AppImage to $HOME/.local/bin\n"
 if ! [[ -d $HOME/.local/bin ]]; then
   mkdir -p $HOME/.local/bin
 fi
@@ -129,7 +129,7 @@ rm $HOME/.local/bin/$APP*.AppImage
 cp out/*AppImage $HOME/.local/bin
 
 # Install desktop config file and icon
-printf "Installing desktop configuration file and icon to $HOME/.local/share"
+printf '\e[1;34m%-6s\e[m' "Installing desktop configuration file and icon to $HOME/.local/share"
 if ! [[ -d $HOME/.local/share/applications ]]; then
   mkdir -p $HOME/.local/share/applications
 fi
