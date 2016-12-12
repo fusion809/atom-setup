@@ -125,7 +125,9 @@ if ! [[ -d $HOME/.local/bin ]]; then
   mkdir -p $HOME/.local/bin
 fi
 # delete previous Atom AppImages
-rm $HOME/.local/bin/$APP*.AppImage
+if ls $HOME/.local/bin/$APP*.AppImage 1> /dev/null 2>&1; then
+  rm $HOME/.local/bin/$APP*.AppImage
+fi
 cp out/*AppImage $HOME/.local/bin
 
 # Install desktop config file and icon
