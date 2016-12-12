@@ -9,7 +9,7 @@ which wget >/dev/null 2>&1 || ( printf '\e[1;31m%-6s\e[m' "wget missing" && exit
 which grep >/dev/null 2>&1 || ( printf '\e[1;31m%-6s\e[m' "grep missing" && exit 1 )
 which sed >/dev/null 2>&1 || ( printf '\e[1;31m%-6s\e[m' "sed missing" && exit 1 )
 which cut >/dev/null 2>&1 || ( printf '\e[1;31m%-6s\e[m' "cut missing" && exit 1 )
-which mksquashfs >/dev/null 2>&1 || (printf '\e[1;31m%-6s\e[m' "mksquashfs missing" && exit 1)
+which mksquashfs >/dev/null 2>&1 || ( printf '\e[1;31m%-6s\e[m' "mksquashfs missing" && exit 1 )
 
 printf '\e[1;32m%-6s\e[m' "Welcome to the Atom AppImage builder and installer! If you experience a bug please report it at our bug tracker: https://github.com/fusion809/atom-setup/issues.\n"
 
